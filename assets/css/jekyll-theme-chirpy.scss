@@ -13,29 +13,29 @@
 ';
 
 /* append your custom style below */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+// body::before {
+//   content: '';
+//   position: fixed;
+//   inset: 0;
+//   z-index: -1;
 
-  background: url('/blog/assets/bg.png') center/cover no-repeat;
-  opacity: 15%;
-  filter: blur(12px);
+//   background: url('/blog/assets/bg.png') center/cover no-repeat;
+//   opacity: 15%;
+//   filter: blur(12px);
 
-  /* The blur effect */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-}
+//   /* The blur effect */
+//   backdrop-filter: blur(10px);
+//   -webkit-backdrop-filter: blur(10px); /* Safari support */
+// }
 
-#topbar-wrapper {
-  background-color: var(--topbar-bg) / 10%;
-}
+// #topbar-wrapper {
+//   background-color: var(--topbar-bg) / 10%;
+// }
 
-footer {
-  background-color: var(--main-bg) / 10%;
-}
+// footer {
+//   background-color: var(--main-bg) / 10%;
+// }
 
-#sidebar {
-  background: var(--sidebar-bg) / 10%;
-}
+// #sidebar {
+//   background: var(--sidebar-bg) / 10%;
+// }
