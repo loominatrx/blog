@@ -144,6 +144,7 @@ ExecStartPre=/usr/bin/bash -c 'for i in {1..20}; do /usr/bin/nvidia-smi >/dev/nu
 # Apply the graphics clock limit
 # You can change `2000` to your desired clock limit, but in this case 2000 is good for most cases.
 ExecStart=/usr/bin/nvidia-smi -lgc 500,2000
+ExecStop=/usr/bin/nvidia-smi -rgc # Reset power limit after stop
 
 RemainAfterExit=yes
 
