@@ -94,6 +94,19 @@ the performance penalty started to kicked in. the average now sits on **90 fps**
 
 ---
 
+if you are interested with the stats, here ya go
+
+| clock speed     | benchmark avg fps | game avg fps          | gpu temps        | power draw | notes               |
+|:----------------|:------------------|:----------------------|:-----------------|:-----------|:--------------------|
+| 2500mhz (stock) | 35 FPS            | 116 FPS               | 80-84°C          | 57-60 W    |                     |
+| 2400mhz         | 33 FPS            | -                     | -                | -          | only benchmark test |
+| 2100mhz         | -                 | -                     | 66°C (benchmark) | 48-50 W    | only benchmark test |
+| 2000mhz         | 28 FPS            | 105 FPS (101-112 FPS) | 71-72°C          | 37-40 W    |                     |
+| 1900mhz         | -                 | 97 FPS  (83-106 FPS)  | 66-72°C          | 32-39 W    |                     |
+| 1800mhz         | -                 | 87 FPS  (80-94 FPS)   | 64-69°C          | 30-35 W    |                     |
+
+---
+
 now's the conclusion.
 
 underclocking may be useful for your hardware aside from setting a power plan with a single click (be it a pc, laptop, or even a phone if one has support). while setting a power plan may be useful, what if you wanted full control of your gpu power? well, underclocking kicks in. it's really useful to limit your gpu power while still maintaining good performance and not create much heat.
