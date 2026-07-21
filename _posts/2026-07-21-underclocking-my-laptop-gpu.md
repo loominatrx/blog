@@ -119,8 +119,49 @@ if you wanted to do the same thing as i did here, you can do so here
 ```bash
 $ sudo nvidia-smi -lgc 500,2000
 ```
-(the command above did not last after reboot, you need to make a systemd service for this)
+
+the command above did not last after reboot, you need to make a systemd service for this
+
+to do this, nano `nvidia-underclock.service`
+```bash
+$ EDITOR=nano sudoedit /etc/systemd/system/nvidia-underclock.service
+```
+
+then, paste this into the file
+```ini
+[Unit]
+Description=Apply NVIDIA GPU underclock
+Documentation=https://loominatrx.my.id/blog/posts/underclocking-my-laptop-gpu/
+After=multi-user.target nvidia-persistenced.service
+Wants=nvidia-persistenced.service
+
+[Service]
+Type=oneshot
+
+# Wait until the NVIDIA driver is ready
+ExecStartPre=/usr/bin/bash -c 'for i in {1..20}; do /usr/bin/nvidia-smi >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1'
+
+# Apply the graphics clock limit
+# You can change `2000` to your desired clock limit, but in this case 2000 is good for most cases.
+ExecStart=/usr/bin/nvidia-smi -lgc 500,2000
+
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+{: file='/etc/systemd/system/nvidia-underclock.service'}
+
+save that file, then start the service, then verify that it worked
+
+```bash
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable --now nvidia-underclock.service
+$ systemctl status nvidia-underclock.service
+```
+
+after that, try play some demanding games and see if the underclock has taken into effect.
 
 the result may vary depending on your gpu you use. i'd recommend testing everything by yourself and find your best sweet spot :D
 
-and that wraps up the underclocking shenanigans today. i'm gonna make a systemd service after this.
+and that wraps up the underclocking shenanigans today. i'm gonna make a systemd service after publishing this post.
