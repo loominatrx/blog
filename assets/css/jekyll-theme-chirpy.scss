@@ -1,0 +1,41 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background: url('/blog/assets/bg.png') center/cover no-repeat;
+  opacity: 15%;
+  filter: blur(12px);
+
+  /* The blur effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+#topbar-wrapper {
+  background-color: var(--topbar-bg) / 10%;
+}
+
+footer {
+  background-color: var(--main-bg) / 10%;
+}
+
+#sidebar {
+  background: var(--sidebar-bg) / 10%;
+}
