@@ -25,13 +25,13 @@ changing plans, that thing dont work.
 
 chatgpt told me to use the built-in nvidia settings (oh god it's ugly), while it did "set" my value, the settings app ignored the value that i've set to that thing, so i'm kinda lost. like, are overclocking/underclocking windows-only thing? i dont want to use windows for the sole purpose of just underclocking my gpu, that would be silly.
 
-i asked about chatgpt on methods that were available at the time. i was quite devastated on this whole underclocking fiasco, knowing that every method that it suggested don't even work.
+i asked chatgpt about methods that were available at the time. i was quite devastated on this whole underclocking fiasco, knowing that every method that it suggested don't even work.
 
 until,... it spat out this:
 
 ![chatgpt](assets/2026-07-21/underclocking/chatgpt convo.png)
 
-at the time i was kinda hopeless and dont even run that command at all after all of the failures to get my gpu to clock down. heck, i even tried to underclock it at 2000mhz out of desperation. i ran it, with little to no hope. ran the benchmark again, and....
+at the time i was kinda hopeless and dont even want to run that command at all after all of the failures to get my gpu to clock down. heck, i even tried to underclock it at 2000mhz out of desperation. i ran it, with little to no hope. ran the benchmark again, and....
 
 IT WORKED!
 
