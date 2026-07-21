@@ -5,8 +5,8 @@ date: 2026-07-16 21:43:00 +0700
 tags: [streaming-related, qna]     # TAG names should always be lowercase
 ---
 
-## what are the chat rules?
-this is a no bullshit chat. i am working, so keep that in mind before typing. don't be a douche.
+## do you have any chat rules that i need to obey?
+don't be a douche. that's it. this is no bullshit chat. i am working, so keep that in mind before typing.
 
 ## what music that is currently playing?
 look over bottom left.
