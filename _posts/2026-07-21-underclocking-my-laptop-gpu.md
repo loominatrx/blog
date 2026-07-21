@@ -5,7 +5,7 @@ date: 2026-07-21 15:28:00 +0700
 tags: [experiment, underclocking]     # TAG names should always be lowercase
 ---
 
-the initial thought came when i was about to go on bed at 3 AM after playing some TDS with my pal over Discord. i was thinking,
+the initial thought came when i was about to go on bed at 3 AM after playing some [TDS](https://roblox.com/games/3260590327/tds) with my pal over Discord. i was thinking,
 
 "what if i dont want to squeeze all that performance?"
 
@@ -13,13 +13,13 @@ the initial thought came when i was about to go on bed at 3 AM after playing som
 
 i went to chatgpt and asked about this underclocking shenanigans.
 
-first, i have to benchmark my gpu at heavy load to find out how much power does the gpu draw on my laptop. according to this data at lact, the gpu clocked peaked at 2500-ish megahertz and the benchmark result.
+first, i have to benchmark my gpu using [unigine superposition](https://benchmark.unigine.com/superposition) at heavy load to find out how much power does the gpu draw on my laptop. according to this data at lact, the gpu clocked peaked at 2500-ish megahertz and the benchmark result.
 
 ![first benchmark](assets/2026-07-21/underclocking/stock 2500mhz/benchmark.png){: .w-75 .normal }
 
 ![graph](assets/2026-07-21/underclocking/stock 2500mhz/graph.jpg){: .w-50 .normal }
 
-i tried lact (since i found that solution on google) and refer chatgpt to use that. i used that under the instructions of what chatgpt gave me and it quickly realized that the app was never designed for nvidia gpus. it only targets amd gpus like the newer rx series.
+i tried [lact](https://github.com/ilya-zlobintsev/LACT) (since i found that solution on google) and refer chatgpt to use that. i used that under the instructions of what chatgpt gave me and for some reason it did not work? [the page said that it works with nvidia](https://github.com/ilya-zlobintsev/LACT/wiki/Hardware-Support#nvidia) but i cant seem to get it working.
 
 changing plans, that thing dont work.
 
@@ -41,7 +41,7 @@ IT WORKED!
 
 thank you `nvidia-smi`, very cool :thumbsup:
 
-but now with that outta the way, i am more interested... what if i ran the legendary batman arkham knight that was made a decade ago?
+but now with that outta the way, i am more interested... what if i ran [the legendary batman arkham knight](https://store.steampowered.com/app/208650/Batman_Arkham_Knight/) that was made a decade ago?
 
 alright, it's test time!
 
@@ -51,6 +51,7 @@ all of the gameplay tests was done with the following settings:
 - fan set to auto
 - maxed out graphics
 - power plan set to performance
+- [mangohud](https://github.com/flightlessmango/Mangohud) for statistics
 
 back to the test:
 
@@ -96,21 +97,30 @@ the performance penalty started to kicked in. the average now sits on **90 fps**
 
 if you are interested with the stats, here ya go
 
-| clock speed     | benchmark avg fps | game avg fps          | gpu temps        | power draw | notes               |
-|:----------------|:------------------|:----------------------|:-----------------|:-----------|:--------------------|
-| 2500mhz (stock) | 35 FPS            | 116 FPS               | 80-84°C          | 57-60 W    |                     |
-| 2400mhz         | 33 FPS            | -                     | -                | -          | only benchmark test |
-| 2100mhz         | -                 | -                     | 66°C (benchmark) | 48-50 W    | only benchmark test |
-| 2000mhz         | 28 FPS            | 105 FPS (101-112 FPS) | 71-72°C          | 37-40 W    |                     |
-| 1900mhz         | -                 | 97 FPS  (83-106 FPS)  | 66-72°C          | 32-39 W    |                     |
-| 1800mhz         | -                 | 87 FPS  (80-94 FPS)   | 64-69°C          | 30-35 W    |                     |
+| clock speed      | benchmark avg fps | game avg fps              | fps lost  | gpu temps        | power draw               | notes                           |
+|:-----------------|:------------------|:--------------------------|:----------|:-----------------|:-------------------------|:--------------------------------|
+| 2500 Mhz (stock) | 35 FPS            | 116 FPS                   | -         | 80-84°C          | 57-60 W                  |                                 |
+| 2400 Mhz         | 33 FPS            | -                         | -         | -                | -                        | only benchmark test             |
+| 2100 Mhz         | -                 | -                         | -         | 66°C (benchmark) | 48-50 W (-16.2%)         | only benchmark test             |
+| **2000 Mhz**     | **28 FPS**        | **105 FPS (101-112 FPS)** | **-9.5%** | **71-72°C**      | **37-40 W (-34.2%) [!]** | **may be good for daily drive** |
+| 1900 Mhz         | -                 | 97 FPS  (83-106 FPS)      | -16.4%    | 66-72°C          | 32-39 W (-39.3%)         |                                 |
+| 1800 Mhz         | -                 | 87 FPS  (80-94 FPS)       | -25.0%    | 64-69°C          | 30-35 W (-44.4%)         | could be good for longevity? needs more thorough test   |
 
 ---
 
 now's the conclusion.
 
-underclocking may be useful for your hardware aside from setting a power plan with a single click (be it a pc, laptop, or even a phone if one has support). while setting a power plan may be useful, what if you wanted full control of your gpu power? well, underclocking kicks in. it's really useful to limit your gpu power while still maintaining good performance and not create much heat.
+underclocking IS useful aside from setting a power plan with a single click (be it a pc, laptop, or even a phone if one has support). while setting a power plan may be useful, what if you wanted full control of your gpu power? well, underclocking kicks in. it's a surprisingly effective way to improve GPU efficiency while keeping performance losses relatively low. after testing several clock speeds, i found 2000 MHz to be the sweet spot on my laptop. the power consumption dropped by roughly 34%, and temperatures became significantly lower.
 
-so,... is it worth it? absolutely.
+so,... is it worth it? absolutely. even with the tiny tradeoff when underclocked, the game still runs great!
 
-and that wraps up the underclocking shenanigans today. i'm gonna make a systemd service for this.
+if you wanted to do the same thing as i did here, you can do so here
+
+```bash
+$ sudo nvidia-smi -lgc 500,2000
+```
+(the command above did not last after reboot, you need to make a systemd service for this)
+
+the result may vary depending on your gpu you use. i'd recommend testing everything by yourself and find your best sweet spot :D
+
+and that wraps up the underclocking shenanigans today. i'm gonna make a systemd service after this.
